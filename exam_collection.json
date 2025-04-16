@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "7f9e9b5d-9f3b-4c0a-9d1a-40ec92fcf4b5",
+		"name": "NCIS403 Web Application",
+		"description": "API endpoints for the NCIS403 Web Application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"testuser\",\n    \"email\": \"test@example.com\",\n    \"password\": \"password123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"register"
+					]
+				},
+				"description": "Register a new user"
+			},
+			"response": []
+		},
+		{
+			"name": "Register User - Invalid Email",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"testuser\",\n    \"email\": \"invalid-email\",\n    \"password\": \"password123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"register"
+					]
+				},
+				"description": "Attempt to register a user with an invalid email format"
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@example.com\",\n    \"password\": \"password123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"login"
+					]
+				},
+				"description": "Login with a registered user"
+			},
+			"response": []
+		},
+		{
+			"name": "Login User - Incorrect Password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@example.com\",\n    \"password\": \"wrongpassword\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"login"
+					]
+				},
+				"description": "Attempt to login with an incorrect password"
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Profile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-Key",
+						"value": "EXAM2024-KEY-5678",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/profile?userId={{userId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"profile"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "{{userId}}"
+						}
+					]
+				},
+				"description": "Get user profile with valid API key. Replace {{userId}} with an actual user ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Profile - No API Key",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/profile?userId={{userId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"profile"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "{{userId}}"
+						}
+					]
+				},
+				"description": "Attempt to get user profile without API key"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Username",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-API-Key",
+						"value": "EXAM2024-KEY-5678",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"{{userId}}\",\n    \"username\": \"newusername\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"profile"
+					]
+				},
+				"description": "Update user's username"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Username - Invalid Username",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-API-Key",
+						"value": "EXAM2024-KEY-5678",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"{{userId}}\",\n    \"username\": \"invalid@username\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"profile"
+					]
+				},
+				"description": "Attempt to update username with invalid characters"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "userId",
+			"value": "user_id_goes_here",
+			"type": "string"
+		}
+	]
+}
