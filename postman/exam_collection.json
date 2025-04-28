@@ -1,0 +1,208 @@
+{
+    "info": {
+      "_postman_id": "12345678-abcd-1234-5678-abcdef123456",
+      "name": "Web Development Exam API Tests",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Register User",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n\t\"username\": \"testuser\",\n\t\"email\": \"test@example.com\",\n\t\"password\": \"password123\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:3000/api/register",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["api", "register"]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Register with Invalid Email",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n\t\"username\": \"testuser\",\n\t\"email\": \"invalid-email\",\n\t\"password\": \"password123\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:3000/api/register",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["api", "register"]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Login User",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n\t\"email\": \"test@example.com\",\n\t\"password\": \"password123\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:3000/api/login",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["api", "login"]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Login with Incorrect Password",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n\t\"email\": \"test@example.com\",\n\t\"password\": \"wrongpassword\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:3000/api/login",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["api", "login"]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Get Profile with API Key",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "X-API-Key",
+              "value": "EXAM2024-KEY-5678"
+            }
+          ],
+          "url": {
+            "raw": "http://localhost:3000/api/profile?userId=123456",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["api", "profile"],
+            "query": [
+              {
+                "key": "userId",
+                "value": "123456"
+              }
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Get Profile without API Key",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:3000/api/profile?userId=123456",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["api", "profile"],
+            "query": [
+              {
+                "key": "userId",
+                "value": "123456"
+              }
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Update Username",
+        "request": {
+          "method": "PATCH",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-API-Key",
+              "value": "EXAM2024-KEY-5678"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n\t\"userId\": \"123456\",\n\t\"username\": \"newusername\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:3000/api/profile",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["api", "profile"]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Update Username with Special Characters",
+        "request": {
+          "method": "PATCH",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-API-Key",
+              "value": "EXAM2024-KEY-5678"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n\t\"userId\": \"123456\",\n\t\"username\": \"invalid@username\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:3000/api/profile",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["api", "profile"]
+          }
+        },
+        "response": []
+      }
+    ]
+  }
